@@ -1,0 +1,114 @@
+4-DC-MOTORS CONTROL SYSTEM - WIRING GUIDE
+==========================================
+
+COMPONENTS REQUIRED:
+===================
+- Arduino Uno R3
+- 2x L293D Motor Driver ICs
+- 4x DC Motors
+- 1x HC-SR04 Ultrasonic Sensor
+- 1x Servo Motor
+- Breadboard
+- Jumper Wires (Red, Black, Green, Orange)
+- Power Supply (5V and 12V)
+
+DETAILED PIN CONNECTIONS:
+========================
+
+ARDUINO TO L293D #1 (FIRST MOTOR DRIVER):
+=========================================
+Arduino Pin 7  → L293D #1 Pin 2  (IN1) - Motor 1 Control
+Arduino Pin 8  → L293D #1 Pin 7  (IN2) - Motor 1 Control
+Arduino Pin 9  → L293D #1 Pin 10 (IN3) - Motor 2 Control
+Arduino Pin 10 → L293D #1 Pin 15 (IN4) - Motor 2 Control
+
+L293D #1 TO MOTORS:
+==================
+L293D #1 Pin 3  (OUT1) → Motor 1 Terminal 1
+L293D #1 Pin 6  (OUT2) → Motor 1 Terminal 2
+L293D #1 Pin 11 (OUT3) → Motor 2 Terminal 1
+L293D #1 Pin 14 (OUT4) → Motor 2 Terminal 2
+
+ARDUINO TO L293D #2 (SECOND MOTOR DRIVER):
+==========================================
+Arduino Pin 2 → L293D #2 Pin 2  (IN1) - Motor 3 Control
+Arduino Pin 3 → L293D #2 Pin 7  (IN2) - Motor 3 Control
+Arduino Pin 4 → L293D #2 Pin 10 (IN3) - Motor 4 Control
+Arduino Pin 5 → L293D #2 Pin 15 (IN4) - Motor 4 Control
+
+L293D #2 TO MOTORS:
+==================
+L293D #2 Pin 3  (OUT1) → Motor 3 Terminal 1
+L293D #2 Pin 6  (OUT2) → Motor 3 Terminal 2
+L293D #2 Pin 11 (OUT3) → Motor 4 Terminal 1
+L293D #2 Pin 14 (OUT4) → Motor 4 Terminal 2
+
+SENSOR CONNECTIONS:
+==================
+Arduino Pin A0 → Servo Motor Signal Wire (Orange)
+Arduino Pin 11 → HC-SR04 TRIG
+Arduino Pin 12 → HC-SR04 ECHO
+
+POWER CONNECTIONS:
+=================
+5V POWER:
+- Arduino 5V → Breadboard 5V Rail
+- L293D #1 Pin 16 (VCC1) → 5V
+- L293D #2 Pin 16 (VCC1) → 5V
+- Servo Motor Red Wire → 5V
+- HC-SR04 VCC → 5V
+
+12V MOTOR POWER:
+- L293D #1 Pin 8 (VCC2) → 12V
+- L293D #2 Pin 8 (VCC2) → 12V
+
+GROUND CONNECTIONS:
+==================
+- Arduino GND → Breadboard GND Rail
+- L293D #1 Pins 4,5,12,13 → GND
+- L293D #2 Pins 4,5,12,13 → GND
+- Servo Motor Brown/Black Wire → GND
+- HC-SR04 GND → GND
+
+ENABLE PINS:
+============
+- L293D #1 Pin 1 (ENA) → 5V
+- L293D #1 Pin 9 (ENB) → 5V
+- L293D #2 Pin 1 (ENA) → 5V
+- L293D #2 Pin 9 (ENB) → 5V
+
+WIRING ORDER:
+============
+1. Connect all GND connections first
+2. Connect 5V power connections
+3. Connect 12V motor power
+4. Connect Arduino pins to L293D
+5. Connect motors to L293D outputs
+6. Connect sensors to Arduino
+7. Connect enable pins to 5V
+
+TESTING SEQUENCE:
+================
+1. Power on Arduino
+2. Check Serial Monitor for "DC Motor Control System Ready!"
+3. Verify servo moves to center position (90°)
+4. Test forward movement (30 seconds)
+5. Test backward movement (1 minute)
+6. Test turning movements
+7. Test obstacle detection with ultrasonic sensor
+
+TROUBLESHOOTING:
+===============
+- If motors don't move: Check power and enable connections
+- If motors spin wrong direction: Swap motor terminal connections
+- If ultrasonic doesn't work: Check TRIG and ECHO connections
+- If servo doesn't move: Check signal wire connection
+- If code doesn't upload: Verify all pin numbers match
+
+SAFETY NOTES:
+============
+- Always disconnect power before making wiring changes
+- Double-check all connections before powering on
+- Use appropriate wire colors for different voltage levels
+- Ensure proper grounding for all components
+- Test each component individually before full system test 
